@@ -1,0 +1,121 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_unhappy
+  - bot_challenge
+  - tell_name
+  - play_video
+  - my_name:
+      use_entities:
+        - name
+  - mobile_number:
+      use_entities:
+        - number
+  - location:
+      use_entities:
+        - region
+  - brands:
+      use_entities:
+        - car_brand
+  - gearbox:
+      use_entities:
+        - gear
+  - interior-color:
+      use_entities:
+        - colourin
+
+entities:
+  - name
+  - number
+  - region
+  - car_brand
+  - gear
+  - colourin
+
+slots:
+  name:
+    type: text
+  number:
+    type: text
+  region:
+    type: text
+  car_brand:
+    type: text
+  gear:
+    type: text
+  colourin:
+    type: text
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_goodbye:
+  - text: "Bye"
+  
+  utter_name:
+  - text: My name is Innovate Yourself.
+
+  utter_ask_name:
+  - text: What is your name?
+
+  utter_ask_number:
+  - text: What is your mobile number?
+
+  utter_ask_region:
+  - text: What is location that you are from?
+
+  utter_ask_car_brand:
+  - text: What is brand of the car?
+
+  utter_ask_gear:
+  - text: What is mode of gear you prefer auto or manual?
+
+  utter_ask_colourin:
+  - text: What is the interior colour of car that you are looking for?
+
+  utter_thanks:
+    - text: Thanks for providing the values.
+
+  utter_details_thanks:
+    - text: "Thanks for providing the given details \nName: {Name},\nMobile Number: {Mobile_number},
+             \nLocation: {Location},\nCarbrand:{Carbrand},\nGear:{Gear},\nInterior colour:{Colourin}"
+
+actions:
+  - action_submit
+
+forms:
+  user_details_form:
+    name:
+      - type: from_entity
+        entity: name
+    number:
+      - type: from_entity
+        entity: number
+    region:
+      - type: from_entity
+        entity: region
+    car_brand:
+      - type: from_entity
+        entity: car_brand
+    gear:
+      - type: from_entity
+        entity: gear
+    colourin:
+      - type: from_entity
+        entity: colourin
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
